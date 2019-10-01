@@ -12,11 +12,13 @@ namespace LuviKunG.BuildPipeline.WebGL
         private static readonly string PREFS_SETTINGS_NAME_FORMAT = ALIAS + "nameformat";
         private static readonly string PREFS_SETTINGS_DATE_TIME_FORMAT = ALIAS + "datetimeformat";
         private static readonly string PREFS_SETTINGS_STRIP_MOBILE_WARNING = ALIAS + "stripMobileWarning";
+        private static readonly string PREFS_SETTINGS_CREATE_NEW_FOLDER = ALIAS + "createNewFolder";
 
         public string buildPath;
         public string nameFormat;
         public string dateTimeFormat;
         public bool stripMobileWarning;
+        public bool createNewFolder;
 
         private static BuildPipelineWebGLSettings instance;
         public static BuildPipelineWebGLSettings Instance
@@ -45,6 +47,7 @@ namespace LuviKunG.BuildPipeline.WebGL
             nameFormat = PlayerPrefs.GetString(PREFS_SETTINGS_NAME_FORMAT, "{package}_{date}");
             dateTimeFormat = PlayerPrefs.GetString(PREFS_SETTINGS_DATE_TIME_FORMAT, "yyyyMMddHHmmss");
             stripMobileWarning = PlayerPrefs.GetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, bool.FalseString) == bool.TrueString;
+            createNewFolder = PlayerPrefs.GetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, bool.TrueString) == bool.TrueString;
         }
 
         public void Save()
@@ -53,6 +56,7 @@ namespace LuviKunG.BuildPipeline.WebGL
             PlayerPrefs.SetString(PREFS_SETTINGS_NAME_FORMAT, nameFormat);
             PlayerPrefs.SetString(PREFS_SETTINGS_DATE_TIME_FORMAT, dateTimeFormat);
             PlayerPrefs.SetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, stripMobileWarning ? bool.TrueString : bool.FalseString);
+            PlayerPrefs.SetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, createNewFolder ? bool.TrueString : bool.FalseString);
         }
 
         public string GetFolderName()

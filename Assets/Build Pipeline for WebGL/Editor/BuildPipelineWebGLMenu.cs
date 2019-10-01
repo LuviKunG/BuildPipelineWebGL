@@ -27,7 +27,11 @@ namespace LuviKunG.BuildPipeline.WebGL
                     scenes.RemoveAt(i--);
             if (!(scenes.Count > 0))
                 return;
-            string buildPath = Path.Combine(path, settings.GetFolderName());
+            string buildPath;
+            if (settings.createNewFolder)
+                buildPath = Path.Combine(path, settings.GetFolderName());
+            else
+                buildPath = path;
             BuildReport report = UnityEditor.BuildPipeline.BuildPlayer(scenes.ToArray(), buildPath, BuildTarget.WebGL, BuildOptions.None);
             BuildSummary summary = report.summary;
             if (summary.result == BuildResult.Succeeded)
