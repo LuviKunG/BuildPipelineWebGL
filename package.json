@@ -1,0 +1,9 @@
+{
+    "name": "com.luvikung.buildpipelinewebgl",
+    "displayName": "Build Pipeline for WebGL",
+    "description": "Build Pipeline for WebGL is a build tools for Unity Editor that able to manage build version by folder and able to strip javascript of mobile warning.",
+    "version": "1.0.0",
+    "unity": "2019.3",
+    "license": "MIT",
+    "dependencies": {}
+}
