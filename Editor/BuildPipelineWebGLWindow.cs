@@ -43,6 +43,7 @@ namespace LuviKunG.BuildPipeline.WebGL
             {
                 settings.dateTimeFormat = EditorGUILayout.TextField("Date time format", settings.dateTimeFormat);
                 settings.stripMobileWarning = EditorGUILayout.Toggle("Strip Mobile Warning", settings.stripMobileWarning);
+                settings.createNewFolder = EditorGUILayout.Toggle("Create New Folder", settings.createNewFolder);
                 if (changeScope.changed)
                     settings.Save();
             }
