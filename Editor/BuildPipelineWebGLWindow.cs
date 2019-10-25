@@ -42,8 +42,9 @@ namespace LuviKunG.BuildPipeline.WebGL
             using (var changeScope = new EditorGUI.ChangeCheckScope())
             {
                 settings.dateTimeFormat = EditorGUILayout.TextField("Date time format", settings.dateTimeFormat);
-                settings.stripMobileWarning = EditorGUILayout.Toggle("Strip Mobile Warning", settings.stripMobileWarning);
-                settings.createNewFolder = EditorGUILayout.Toggle("Create New Folder", settings.createNewFolder);
+                settings.stripMobileWarning = EditorGUILayout.Toggle("Strip mobile warning", settings.stripMobileWarning);
+                settings.createNewFolder = EditorGUILayout.Toggle("Create new folder", settings.createNewFolder);
+                settings.buildOptions = (BuildOptions)EditorGUILayout.EnumFlagsField("Build options", settings.buildOptions);
                 if (changeScope.changed)
                     settings.Save();
             }
