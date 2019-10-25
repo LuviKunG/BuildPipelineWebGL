@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.2
+- Add new 'Build options'.
+
 ## 1.0.1
 - Add new "Create New Folder" function that able to create & named the folder to put a build in.
 

@@ -32,12 +32,16 @@ namespace LuviKunG.BuildPipeline.WebGL
                 buildPath = Path.Combine(path, settings.GetFolderName());
             else
                 buildPath = path;
-            BuildReport report = UnityEditor.BuildPipeline.BuildPlayer(scenes.ToArray(), buildPath, BuildTarget.WebGL, BuildOptions.None);
+            BuildReport report = UnityEditor.BuildPipeline.BuildPlayer(scenes.ToArray(), buildPath, BuildTarget.WebGL, settings.buildOptions);
             BuildSummary summary = report.summary;
             if (summary.result == BuildResult.Succeeded)
             {
                 Debug.Log($"Build succeeded at '{buildPath}' using {summary.totalTime.TotalSeconds.ToString("N2")} seconds with size of {summary.totalSize} bytes.");
+#if UNITY_EDITOR_OSX
+                Application.OpenURL("file:/" + buildPath);
+#else
                 Application.OpenURL(buildPath);
+#endif
             }
             if (summary.result == BuildResult.Failed)
             {
