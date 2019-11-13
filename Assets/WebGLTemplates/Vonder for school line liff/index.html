@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles/main.css">
+  <title>%UNITY_WEB_NAME%</title>
+  <style>
+    div#icon {
+      background-image: url("images/logo.png");
+    }
+  </style>
+  <!--<script src="scripts/log.js"></script>-->
+  <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+</head>
+
+<body>
+  <div id="webgl-content">
+    <div id="gameContainer"></div>
+  </div>
+  <div id="box"></div>
+  <div id="loadingBox">
+    <div id="spinner"></div>
+    <div id="bgBar"></div>
+    <div id="progressBar"></div>
+  </div>
+  <div id="icon"></div>
+  <p id="loadingInfo">Loading</p>
+  <script>
+    var container = {
+      gameContainer: document.getElementById('gameContainer'),
+      loadingBox: document.getElementById('loadingBox'),
+      icon: document.getElementById('icon'),
+      loadingInfo: document.getElementById('loadingInfo'),
+      box: document.getElementById('box'),
+      spinner: document.getElementById('spinner'),
+      bgBar: document.getElementById('bgBar'),
+      progressBar: document.getElementById('progressBar')
+    }
+
+    var gameInstance = UnityLoader.instantiate('gameContainer', '%UNITY_WEBGL_BUILD_URL%', {
+      onProgress: UnityProgress,
+      Module: {
+        onRuntimeInitialized: function () {
+          UnityProgress(gameInstance, 'complete');
+        },
+        preInit: [function () {
+          UnityProgress(gameInstance, 'preinit');
+        }]
+      }
+    });
+
+    function UnityProgress(gameInstance, progress) {
+      if (container.gameContainer) document.body.style.background = container.gameContainer.style.background;
+      if (!gameInstance.Module) {
+        return;
+      } else if (progress === 'complete') {
+        container.loadingBox.style.display = 'none';
+        container.icon.style.display = 'none';
+        container.loadingInfo.style.display = 'none';
+        container.box.style.display = 'none';
+        container.gameContainer.style.margin = 'auto';
+      } else if (progress === 1 || progress === 'preinit') {
+        container.loadingInfo.innerHTML = 'Initializing';
+        container.spinner.style.display = 'inherit';
+        container.bgBar.style.display = 'none';
+        container.progressBar.style.display = 'none';
+      } else if (progress > 0) {
+        container.progressBar.style.width = 300 * progress + 'px'
+        container.loadingInfo.innerHTML = Math.round(progress * 100) + '%';
+        container.spinner.style.display = 'none';
+        container.bgBar.style.display = 'block';
+        container.progressBar.style.display = 'inherit';
+      }
+    }
+  </script>
+  <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+</body>
+
+</html>

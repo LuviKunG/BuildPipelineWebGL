@@ -14,12 +14,16 @@ namespace LuviKunG.BuildPipeline.WebGL
         private static readonly string PREFS_SETTINGS_STRIP_MOBILE_WARNING = ALIAS + "stripMobileWarning";
         private static readonly string PREFS_SETTINGS_CREATE_NEW_FOLDER = ALIAS + "createNewFolder";
         private static readonly string PREFS_SETTINGS_BUILD_OPTIONS = ALIAS + "buildOptions";
+        private static readonly string PREFS_SETTINGS_MEMORY_SIZE = ALIAS + "memorySize";
+        private static readonly string PREFS_SETTINGS_LINKER_TARGET = ALIAS + "linkerTarget";
 
         public string buildPath;
         public string nameFormat;
         public string dateTimeFormat;
         public bool stripMobileWarning;
         public bool createNewFolder;
+        public WebGLLinkerTarget linkerTarget;
+        public int memorySize;
         public BuildOptions buildOptions;
 
         private static BuildPipelineWebGLSettings instance;
@@ -50,6 +54,8 @@ namespace LuviKunG.BuildPipeline.WebGL
             dateTimeFormat = PlayerPrefs.GetString(PREFS_SETTINGS_DATE_TIME_FORMAT, "yyyyMMddHHmmss");
             stripMobileWarning = PlayerPrefs.GetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, bool.FalseString) == bool.TrueString;
             createNewFolder = PlayerPrefs.GetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, bool.TrueString) == bool.TrueString;
+            linkerTarget = (WebGLLinkerTarget)PlayerPrefs.GetInt(PREFS_SETTINGS_LINKER_TARGET, (int)PlayerSettings.WebGL.linkerTarget);
+            memorySize = PlayerPrefs.GetInt(PREFS_SETTINGS_MEMORY_SIZE, PlayerSettings.WebGL.memorySize);
             buildOptions = (BuildOptions)PlayerPrefs.GetInt(PREFS_SETTINGS_BUILD_OPTIONS, 0);
         }
 
@@ -60,6 +66,8 @@ namespace LuviKunG.BuildPipeline.WebGL
             PlayerPrefs.SetString(PREFS_SETTINGS_DATE_TIME_FORMAT, dateTimeFormat);
             PlayerPrefs.SetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, stripMobileWarning ? bool.TrueString : bool.FalseString);
             PlayerPrefs.SetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, createNewFolder ? bool.TrueString : bool.FalseString);
+            PlayerPrefs.SetInt(PREFS_SETTINGS_LINKER_TARGET, (int)linkerTarget);
+            PlayerPrefs.SetInt(PREFS_SETTINGS_MEMORY_SIZE, (int)memorySize);
             PlayerPrefs.SetInt(PREFS_SETTINGS_BUILD_OPTIONS, (int)buildOptions);
         }
 

@@ -44,7 +44,11 @@ namespace LuviKunG.BuildPipeline.WebGL
                 settings.dateTimeFormat = EditorGUILayout.TextField("Date time format", settings.dateTimeFormat);
                 settings.stripMobileWarning = EditorGUILayout.Toggle("Strip mobile warning", settings.stripMobileWarning);
                 settings.createNewFolder = EditorGUILayout.Toggle("Create new folder", settings.createNewFolder);
+                settings.linkerTarget = (WebGLLinkerTarget)EditorGUILayout.EnumPopup("Linker target", settings.linkerTarget);
+                settings.memorySize = EditorGUILayout.IntField("Memory size", settings.memorySize);
                 settings.buildOptions = (BuildOptions)EditorGUILayout.EnumFlagsField("Build options", settings.buildOptions);
+                string templateName = PlayerSettings.WebGL.template.Substring(PlayerSettings.WebGL.template.IndexOf(':') + 1);
+                EditorGUILayout.LabelField("Template", templateName, EditorStyles.helpBox);
                 if (changeScope.changed)
                     settings.Save();
             }
@@ -52,7 +56,7 @@ namespace LuviKunG.BuildPipeline.WebGL
             {
                 using (var horizontalScope = new EditorGUILayout.HorizontalScope())
                 {
-                    EditorGUILayout.LabelField("Build location", settings.buildPath);
+                    EditorGUILayout.LabelField("Build location", string.IsNullOrWhiteSpace(settings.buildPath) ? "<No location>" : settings.buildPath);
                     if (GUILayout.Button("Change...", GUILayout.Width(96.0f)))
                     {
                         var path = OpenBuildSavePanel(settings.buildPath);
@@ -72,6 +76,7 @@ namespace LuviKunG.BuildPipeline.WebGL
                     GUI.enabled = cacheEnable;
                     GUILayout.FlexibleSpace();
                 }
+                //EditorGUILayout.LabelField();
             }
         }
 
