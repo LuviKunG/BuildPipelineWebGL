@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.4
+- Improve build mechanism.
+
 ## 1.0.3
 - Add new 'Memory Size'.
 - Add new 'Linker Target'.
