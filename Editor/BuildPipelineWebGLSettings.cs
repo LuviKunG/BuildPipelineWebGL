@@ -15,6 +15,8 @@ namespace LuviKunG.BuildPipeline.WebGL
         private static readonly string PREFS_SETTINGS_CREATE_NEW_FOLDER = ALIAS + "createNewFolder";
         private static readonly string PREFS_SETTINGS_BUILD_OPTIONS = ALIAS + "buildOptions";
         private static readonly string PREFS_SETTINGS_MEMORY_SIZE = ALIAS + "memorySize";
+        private static readonly string PREFS_SETTINGS_COMPRESSION_FORMAT = ALIAS + "compressionFormat";
+        private static readonly string PREFS_SETTINGS_WASM_STREAMING = ALIAS + "wasmStreaming";
         private static readonly string PREFS_SETTINGS_LINKER_TARGET = ALIAS + "linkerTarget";
 
         public string buildPath;
@@ -24,6 +26,8 @@ namespace LuviKunG.BuildPipeline.WebGL
         public bool createNewFolder;
         public WebGLLinkerTarget linkerTarget;
         public int memorySize;
+        public WebGLCompressionFormat compressionFormat;
+        public bool wasmStreaming;
         public BuildOptions buildOptions;
 
         private static BuildPipelineWebGLSettings instance;
@@ -56,6 +60,8 @@ namespace LuviKunG.BuildPipeline.WebGL
             createNewFolder = PlayerPrefs.GetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, bool.TrueString) == bool.TrueString;
             linkerTarget = (WebGLLinkerTarget)PlayerPrefs.GetInt(PREFS_SETTINGS_LINKER_TARGET, (int)PlayerSettings.WebGL.linkerTarget);
             memorySize = PlayerPrefs.GetInt(PREFS_SETTINGS_MEMORY_SIZE, PlayerSettings.WebGL.memorySize);
+            compressionFormat = (WebGLCompressionFormat)PlayerPrefs.GetInt(PREFS_SETTINGS_COMPRESSION_FORMAT, (int)PlayerSettings.WebGL.compressionFormat);
+            wasmStreaming = PlayerPrefs.GetString(PREFS_SETTINGS_WASM_STREAMING, PlayerSettings.WebGL.wasmStreaming ? bool.TrueString : bool.FalseString) == bool.TrueString;
             buildOptions = (BuildOptions)PlayerPrefs.GetInt(PREFS_SETTINGS_BUILD_OPTIONS, 0);
         }
 
@@ -67,7 +73,9 @@ namespace LuviKunG.BuildPipeline.WebGL
             PlayerPrefs.SetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, stripMobileWarning ? bool.TrueString : bool.FalseString);
             PlayerPrefs.SetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, createNewFolder ? bool.TrueString : bool.FalseString);
             PlayerPrefs.SetInt(PREFS_SETTINGS_LINKER_TARGET, (int)linkerTarget);
-            PlayerPrefs.SetInt(PREFS_SETTINGS_MEMORY_SIZE, (int)memorySize);
+            PlayerPrefs.SetInt(PREFS_SETTINGS_MEMORY_SIZE, memorySize);
+            PlayerPrefs.SetInt(PREFS_SETTINGS_COMPRESSION_FORMAT, (int)compressionFormat);
+            PlayerPrefs.SetString(PREFS_SETTINGS_WASM_STREAMING, wasmStreaming ? bool.TrueString : bool.FalseString);
             PlayerPrefs.SetInt(PREFS_SETTINGS_BUILD_OPTIONS, (int)buildOptions);
         }
 
