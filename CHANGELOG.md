@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.5
+- Add new option for select compression format.
+- Add new option for toggle WASM streaming.
+
 ## 1.0.4
 - Improve build mechanism.
 

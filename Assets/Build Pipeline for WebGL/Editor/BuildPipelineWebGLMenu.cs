@@ -32,8 +32,10 @@ namespace LuviKunG.BuildPipeline.WebGL
                 buildPath = Path.Combine(path, settings.GetFolderName());
             else
                 buildPath = path;
-            PlayerSettings.WebGL.memorySize = settings.memorySize;
             PlayerSettings.WebGL.linkerTarget = settings.linkerTarget;
+            PlayerSettings.WebGL.memorySize = settings.memorySize;
+            PlayerSettings.WebGL.compressionFormat = settings.compressionFormat;
+            PlayerSettings.WebGL.wasmStreaming = settings.wasmStreaming;
             BuildReport report = UnityEditor.BuildPipeline.BuildPlayer(scenes.ToArray(), buildPath, BuildTarget.WebGL, settings.buildOptions);
             BuildSummary summary = report.summary;
             if (summary.result == BuildResult.Succeeded)

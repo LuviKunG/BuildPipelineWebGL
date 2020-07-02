@@ -46,6 +46,8 @@ namespace LuviKunG.BuildPipeline.WebGL
                 settings.createNewFolder = EditorGUILayout.Toggle("Create new folder", settings.createNewFolder);
                 settings.linkerTarget = (WebGLLinkerTarget)EditorGUILayout.EnumPopup("Linker target", settings.linkerTarget);
                 settings.memorySize = EditorGUILayout.IntField("Memory size", settings.memorySize);
+                settings.compressionFormat = (WebGLCompressionFormat)EditorGUILayout.EnumPopup("Compression", settings.compressionFormat);
+                settings.wasmStreaming = EditorGUILayout.Toggle("WASM Streaming", settings.wasmStreaming);
                 settings.buildOptions = (BuildOptions)EditorGUILayout.EnumFlagsField("Build options", settings.buildOptions);
                 string templateName = PlayerSettings.WebGL.template.Substring(PlayerSettings.WebGL.template.IndexOf(':') + 1);
                 EditorGUILayout.LabelField("Template", templateName, EditorStyles.helpBox);
@@ -76,7 +78,6 @@ namespace LuviKunG.BuildPipeline.WebGL
                     GUI.enabled = cacheEnable;
                     GUILayout.FlexibleSpace();
                 }
-                //EditorGUILayout.LabelField();
             }
         }
 
