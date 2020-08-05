@@ -8,7 +8,7 @@ namespace LuviKunG.BuildPipeline.WebGL
         private const string HELPBOX_NAME_FORMATTING_INFO = @"How to format the file name.
 
 {name} = App Name.
-{package} = Android Package Name.
+{package} = WebGL Package Name.
 {version} = App Version.
 {bundle} = App Bundle.
 {date} = Date time. (format)";
