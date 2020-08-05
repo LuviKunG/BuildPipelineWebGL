@@ -3,7 +3,7 @@ using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
 
-namespace LuviKunG.BuildPipeline.WebGL
+namespace LuviKunG.BuildPipeline
 {
     public static class BuildPipelineWebGLPostProcess
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Text;
 
-namespace LuviKunG.BuildPipeline.WebGL
+namespace LuviKunG.BuildPipeline
 {
     public sealed class BuildPipelineWebGLSettings
     {

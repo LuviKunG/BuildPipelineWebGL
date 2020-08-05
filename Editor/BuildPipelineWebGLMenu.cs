@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEditor.Build.Reporting;
 using UnityEngine;
 
-namespace LuviKunG.BuildPipeline.WebGL
+namespace LuviKunG.BuildPipeline
 {
     public static class BuildPipelineWebGLMenu
     {
