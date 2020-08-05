@@ -10,6 +10,8 @@ New menu will be add to your Unity Editor named 'Build'. In the menu that will i
 - **WebGL** will perform a build. If you're not select the directory before, it will popup the directory selection window and start perform a build.
 - **Settings/WebGL** will open the build pipeline settings for android.
 
+![Preview](images/preview.png)
+
 In the settings, you can set a format name, date format and other options for build folder. (It's already include descriptions)
 
 ## How to install?
@@ -25,7 +27,7 @@ Then merge this json format below.
 ```json
 {
   "dependencies": {
-    "com.luvikung.buildpipelinewebgl": "https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.5"
+    "com.luvikung.buildpipelinewebgl": "https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.6"
   }
 }
 ```
@@ -40,7 +42,7 @@ In Unity 2019.3 or greater, Package Manager is include the new feature that able
 
 Just simply using this git URL and following with version like this example.
 
-**https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.5**
+**https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.6**
 
 Make sure that you're select the latest version.
 
