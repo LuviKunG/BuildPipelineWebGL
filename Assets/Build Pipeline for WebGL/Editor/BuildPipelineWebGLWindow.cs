@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace LuviKunG.BuildPipeline.WebGL
+namespace LuviKunG.BuildPipeline
 {
     public sealed class BuildPipelineWebGLWindow : EditorWindow
     {
