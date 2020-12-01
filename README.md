@@ -1,7 +1,7 @@
 # Build Pipeline for WebGL
 
 This is a build tools for Unity Editor able to manage build WebGL separate by folder and version control (via naming) and able to strip mobile warning in WebGL javascript.
-Created by Thanut Panichyotai (@[LuviKunG]((https://github.com/LuviKunG)))
+Created by Thanut Panichyotai (@[LuviKunG](<(https://github.com/LuviKunG)>))
 
 ## How to use?
 
@@ -18,7 +18,7 @@ In the settings, you can set a format name, date format and other options for bu
 
 ### UPM Install via manifest.json
 
-Locate to your Unity Project. In *Packages* folder, you will see a file named **manifest.json**. Open it with your text editor (such as Notepad++ or Visual Studio Code or Legacy Notepad)
+Locate to your Unity Project. In _Packages_ folder, you will see a file named **manifest.json**. Open it with your text editor (such as Notepad++ or Visual Studio Code or Legacy Notepad)
 
 Then merge this json format below.
 
@@ -27,7 +27,7 @@ Then merge this json format below.
 ```json
 {
   "dependencies": {
-    "com.luvikung.buildpipelinewebgl": "https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.6"
+    "com.luvikung.buildpipelinewebgl": "https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.7"
   }
 }
 ```
@@ -42,7 +42,7 @@ In Unity 2019.3 or greater, Package Manager is include the new feature that able
 
 Just simply using this git URL and following with version like this example.
 
-**https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.6**
+**https://github.com/LuviKunG/BuildPipelineWebGL.git#1.0.7**
 
 Make sure that you're select the latest version.
 

@@ -2,6 +2,7 @@
 using System.IO;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using System.Text;
 
 namespace LuviKunG.BuildPipeline
 {
@@ -12,19 +13,36 @@ namespace LuviKunG.BuildPipeline
         [PostProcessBuild(0)]
         public static void OnPostProcessBuild(BuildTarget target, string targetPath)
         {
-            settings = BuildPipelineWebGLSettings.Instance;
-            if (settings.stripMobileWarning && target == BuildTarget.WebGL)
+            if (target == BuildTarget.WebGL)
             {
-                try
+                settings = BuildPipelineWebGLSettings.Instance;
+                if (settings.stripMobileWarning)
                 {
-                    var path = Path.Combine(targetPath, "Build/UnityLoader.js");
-                    var text = File.ReadAllText(path);
-                    text = text.Replace("UnityLoader.SystemInfo.mobile", "false");
-                    File.WriteAllText(path, text);
+                    try
+                    {
+                        var path = Path.Combine(targetPath, "Build/UnityLoader.js");
+                        var sb = new StringBuilder(File.ReadAllText(path));
+                        sb = sb.Replace("UnityLoader.SystemInfo.mobile", "false");
+                        File.WriteAllText(path, sb.ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        UnityEngine.Debug.LogException(e);
+                    }
                 }
-                catch (Exception e)
+                if (settings.fixMacOSVersionRegex)
                 {
-                    UnityEngine.Debug.LogException(e);
+                    try
+                    {
+                        var path = Path.Combine(targetPath, "Build/UnityLoader.js");
+                        var sb = new StringBuilder(File.ReadAllText(path));
+                        sb = sb.Replace("Mac OS X (10[\\.\\_\\d]+)", "Mac OS X (1[0-9][\\.\\_\\d]+)");
+                        File.WriteAllText(path, sb.ToString());
+                    }
+                    catch (Exception e)
+                    {
+                        UnityEngine.Debug.LogException(e);
+                    }
                 }
             }
         }

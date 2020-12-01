@@ -12,6 +12,7 @@ namespace LuviKunG.BuildPipeline
         private static readonly string PREFS_SETTINGS_NAME_FORMAT = ALIAS + "nameformat";
         private static readonly string PREFS_SETTINGS_DATE_TIME_FORMAT = ALIAS + "datetimeformat";
         private static readonly string PREFS_SETTINGS_STRIP_MOBILE_WARNING = ALIAS + "stripMobileWarning";
+        private static readonly string PREFS_SETTINGS_FIX_MACOS_VERSION_REGEX = ALIAS + "fixMacOSVersionRegex";
         private static readonly string PREFS_SETTINGS_CREATE_NEW_FOLDER = ALIAS + "createNewFolder";
         private static readonly string PREFS_SETTINGS_BUILD_OPTIONS = ALIAS + "buildOptions";
         private static readonly string PREFS_SETTINGS_MEMORY_SIZE = ALIAS + "memorySize";
@@ -23,6 +24,7 @@ namespace LuviKunG.BuildPipeline
         public string nameFormat;
         public string dateTimeFormat;
         public bool stripMobileWarning;
+        public bool fixMacOSVersionRegex;
         public bool createNewFolder;
         public WebGLLinkerTarget linkerTarget;
         public int memorySize;
@@ -57,6 +59,7 @@ namespace LuviKunG.BuildPipeline
             nameFormat = PlayerPrefs.GetString(PREFS_SETTINGS_NAME_FORMAT, "{package}_{date}");
             dateTimeFormat = PlayerPrefs.GetString(PREFS_SETTINGS_DATE_TIME_FORMAT, "yyyyMMddHHmmss");
             stripMobileWarning = PlayerPrefs.GetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, bool.FalseString) == bool.TrueString;
+            fixMacOSVersionRegex = PlayerPrefs.GetString(PREFS_SETTINGS_FIX_MACOS_VERSION_REGEX, bool.FalseString) == bool.TrueString;
             createNewFolder = PlayerPrefs.GetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, bool.TrueString) == bool.TrueString;
             linkerTarget = (WebGLLinkerTarget)PlayerPrefs.GetInt(PREFS_SETTINGS_LINKER_TARGET, (int)PlayerSettings.WebGL.linkerTarget);
             memorySize = PlayerPrefs.GetInt(PREFS_SETTINGS_MEMORY_SIZE, PlayerSettings.WebGL.memorySize);
@@ -71,6 +74,7 @@ namespace LuviKunG.BuildPipeline
             PlayerPrefs.SetString(PREFS_SETTINGS_NAME_FORMAT, nameFormat);
             PlayerPrefs.SetString(PREFS_SETTINGS_DATE_TIME_FORMAT, dateTimeFormat);
             PlayerPrefs.SetString(PREFS_SETTINGS_STRIP_MOBILE_WARNING, stripMobileWarning ? bool.TrueString : bool.FalseString);
+            PlayerPrefs.SetString(PREFS_SETTINGS_FIX_MACOS_VERSION_REGEX, fixMacOSVersionRegex ? bool.TrueString : bool.FalseString);
             PlayerPrefs.SetString(PREFS_SETTINGS_CREATE_NEW_FOLDER, createNewFolder ? bool.TrueString : bool.FalseString);
             PlayerPrefs.SetInt(PREFS_SETTINGS_LINKER_TARGET, (int)linkerTarget);
             PlayerPrefs.SetInt(PREFS_SETTINGS_MEMORY_SIZE, memorySize);
