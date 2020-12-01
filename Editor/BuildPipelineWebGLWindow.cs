@@ -43,6 +43,7 @@ namespace LuviKunG.BuildPipeline
             {
                 settings.dateTimeFormat = EditorGUILayout.TextField("Date time format", settings.dateTimeFormat);
                 settings.stripMobileWarning = EditorGUILayout.Toggle("Strip mobile warning", settings.stripMobileWarning);
+                settings.fixMacOSVersionRegex = EditorGUILayout.Toggle("Fix Mac OS Version Regex", settings.fixMacOSVersionRegex);
                 settings.createNewFolder = EditorGUILayout.Toggle("Create new folder", settings.createNewFolder);
                 settings.linkerTarget = (WebGLLinkerTarget)EditorGUILayout.EnumPopup("Linker target", settings.linkerTarget);
                 settings.memorySize = EditorGUILayout.IntField("Memory size", settings.memorySize);
